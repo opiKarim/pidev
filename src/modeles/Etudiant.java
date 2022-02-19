@@ -36,14 +36,14 @@ public class Etudiant extends User {
         this.role = Role.etudiant;
     }
 
-
     @Override
     public String toString() {
-        return "{" +
-            " section='" + getSection() + "'" +
-            ", niveau='" + getNiveau() + "'" +
-            ", score='" + getScore() + "'" +
-            "}";
+
+        return "{" + super.toString() +
+                " section='" + getSection() + "'" +
+                ", niveau='" + getNiveau() + "'" +
+                ", score='" + getScore() + "'" +
+                "}";
     }
 
     public String getSection() {
