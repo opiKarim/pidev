@@ -1,0 +1,13 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "activation.jar",
+        "mail.jar",
+        "e:\\Program Files\\NetBeans 8.2\\ide\\modules\\ext\\mysql-connector-java-5.1.23-bin.jar"
+    ],
+    "java.project.sourcePaths": [
+        "src/services",
+        "src/Test",
+        "src/modeles"
+    ]
+}

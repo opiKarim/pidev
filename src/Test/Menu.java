@@ -1,5 +1,7 @@
 package Test;
 
+
+
 import java.util.Scanner;
 
 import modeles.Etudiant;
@@ -15,11 +17,13 @@ public class Menu {
     Scanner in = new Scanner(System.in);
 
     public String start() {
-        System.out.println(" ========================"
-                + "\n 1. list all users"
-                + "\n 2. create user"
-                + "\n 3. update user"
-                + "\n 4. delete user");
+        System.out.println(
+            // " ========================"
+            //     + "\n 1. list all users"
+            //     + "\n 2. create user"
+            //     + "\n 3. update user"
+            //     + "\n 4. delete user"
+                 "\n 1. Send Email");
 
         String s = in.nextLine();
         return s;
