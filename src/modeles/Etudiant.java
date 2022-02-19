@@ -18,9 +18,9 @@ public class Etudiant extends User {
         super();
     }
 
-    public Etudiant(int id_user, String nom, String prenom, int phone, String email, String pwd, String carte_banq,
+    public Etudiant(int id, String nom, String prenom, int phone, String email, String pwd, String carte_banq,
             String section, int niveau, int score) {
-        super(id_user, nom, prenom, phone, email, pwd, carte_banq);
+        super(id, nom, prenom, phone, email, pwd, carte_banq);
         this.section = section;
         this.niveau = niveau;
         this.score = score;

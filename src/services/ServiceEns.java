@@ -1,6 +1,5 @@
 package services;
 
-import java.util.List;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,14 +7,28 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
+import modeles.Cour;
 import modeles.Enseignant;
-import modeles.Responsable;
-import modeles.User;
 import utils.DataSource;
 
-public class ServiceEns implements IService{
+public class ServiceEns implements IService {
     Connection cnx = DataSource.getInstance().getCnx();
+
+    public List<Cour> addCours(Enseignant e) {
+        List<Cour> cours = new ArrayList<>();
+        try {
+            String req = "SELECT * FROM `cour` where id_enseignant = " + e.getId();
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while (rs.next()) {
+                Cour c = new Cour(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getInt(4));
+                cours.add(c);
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        return cours;
+    }
 
     @Override
     public void add(Object u) {
@@ -83,7 +96,7 @@ public class ServiceEns implements IService{
     @Override
     public boolean update(Object u) {
         try {
-            String req = "update `etudiant` set nom = ?, prenom = ?, phone = ?, email = ?, pwd = ?, carte_banq = ?, universite = ? , section = ? where id_user = ?";
+            String req = "update `etudiant` set nom = ?, prenom = ?, phone = ?, email = ?, pwd = ?, carte_banq = ?, universite = ? , section = ? where id = ?";
             PreparedStatement ps = cnx.prepareStatement(req);
             Enseignant e = (Enseignant) u;
 
@@ -96,7 +109,7 @@ public class ServiceEns implements IService{
             ps.setString(7, e.getRole().toString());
             ps.setString(8, e.getUniversite());
             ps.setString(9, e.getSection());
-            ps.setInt(10, e.getId_user());
+            ps.setInt(10, e.getId());
 
             return true;
         } catch (Exception e) {
@@ -111,7 +124,7 @@ public class ServiceEns implements IService{
         String req = "delete from Enseignant where id = ?";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
-            ps.setInt(1, e.getId_user());
+            ps.setInt(1, e.getId());
             ps.executeUpdate();
             System.out.println("Enseignant supprimer");
         } catch (SQLException ex) {
@@ -119,5 +132,5 @@ public class ServiceEns implements IService{
         }
         return false;
     }
-    
+
 }

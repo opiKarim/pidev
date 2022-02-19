@@ -46,7 +46,7 @@ public class ServiceUser implements IService<User> {
     public User getById(int id) {
         User u = new User();
         try {
-            String req = "SELECT * FROM `user` where id = "+ id;
+            String req = "SELECT * FROM `user` where id = " + id;
             // Statement st = cnx.createStatement();
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
@@ -87,7 +87,7 @@ public class ServiceUser implements IService<User> {
         String req = "update user set nom = ? , prenom = ? , tel =? , email = ? , pwd = ? , carte_banq = ?  where id = ? ";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
-            ps.setInt(7, u.getId_user());
+            ps.setInt(7, u.getId());
             ps.setString(1, u.getNom());
             ps.setString(2, u.getPrenom());
             ps.setInt(3, u.getPhone());
@@ -110,7 +110,7 @@ public class ServiceUser implements IService<User> {
         String req = "delete from user where id = ?";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
-            ps.setInt(1, u.getId_user());
+            ps.setInt(1, u.getId());
             ps.executeUpdate();
             System.out.println("User supprimer");
         } catch (SQLException ex) {
@@ -118,6 +118,5 @@ public class ServiceUser implements IService<User> {
         }
         return false;
     }
-
 
 }

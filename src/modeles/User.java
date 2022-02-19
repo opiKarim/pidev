@@ -10,7 +10,7 @@ package modeles;
  * @author Faty
  */
 public class User {
-    protected int id_user;
+    protected int id;
     protected String nom;
     protected String prenom;
     protected int phone;
@@ -22,12 +22,12 @@ public class User {
     public User() {
     }
 
-    public User(int id_user) {
-        this.id_user = id_user;
+    public User(int id) {
+        this.id = id;
     }
 
-    public User(int id_user, String nom, String prenom, int phone, String email, String pwd, String carte_banq) {
-        this.id_user = id_user;
+    public User(int id, String nom, String prenom, int phone, String email, String pwd, String carte_banq) {
+        this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.phone = phone;
@@ -50,7 +50,7 @@ public class User {
     @Override
     public String toString() {
         return "{" +
-                " id_user='" + getId_user() + "'" +
+                " id='" + getId() + "'" +
                 ", nom='" + getNom() + "'" +
                 ", prenom='" + getPrenom() + "'" +
                 ", phone='" + getPhone() + "'" +
@@ -69,12 +69,12 @@ public class User {
         this.role = role;
     }
 
-    public int getId_user() {
-        return this.id_user;
+    public int getId() {
+        return this.id;
     }
 
-    public void setId_user(int id_user) {
-        this.id_user = id_user;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNom() {

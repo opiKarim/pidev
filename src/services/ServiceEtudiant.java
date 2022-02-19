@@ -16,7 +16,7 @@ public class ServiceEtudiant implements IService {
 
     Connection cnx = DataSource.getInstance().getCnx();
 
-    public void add(User u){
+    public void add(User u) {
         Etudiant e = (Etudiant) u;
         try {
             String req = "INSERT INTO `etudiant`(`nom`, `prenom`, `tel`, `email`, `pwd`, `carte_banq`,`role`,`section`,`niveau`,`score`) VALUES (?,?,?,?,?,?,?,?,?,?)";
@@ -41,7 +41,7 @@ public class ServiceEtudiant implements IService {
     }
 
     @Override
-    public Object getById(int id_user) {
+    public Object getById(int id) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -54,7 +54,7 @@ public class ServiceEtudiant implements IService {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {
-               Etudiant e = new Etudiant(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5),
+                Etudiant e = new Etudiant(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5),
                         rs.getString(6), rs.getString(7), rs.getString(9), rs.getInt(10), rs.getInt(11));
                 list.add(e);
             }
@@ -67,7 +67,7 @@ public class ServiceEtudiant implements IService {
     @Override
     public boolean update(Object u) {
         try {
-            String req = "update `etudiant` set nom = ?, prenom = ?, phone = ?, email = ?, pwd = ?, carte_banq = ?, section = ?, niveau = ?, score = ? where id_user = ?";
+            String req = "update `etudiant` set nom = ?, prenom = ?, phone = ?, email = ?, pwd = ?, carte_banq = ?, section = ?, niveau = ?, score = ? where   id = ?";
             PreparedStatement ps = cnx.prepareStatement(req);
             Etudiant e = (Etudiant) u;
 
@@ -82,7 +82,7 @@ public class ServiceEtudiant implements IService {
             ps.setInt(9, e.getNiveau());
             ps.setInt(10, e.getScore());
 
-            ps.setInt(11,e.getId_user());
+            ps.setInt(11, e.getId());
 
             return true;
         } catch (Exception e) {
@@ -97,7 +97,7 @@ public class ServiceEtudiant implements IService {
         String req = "delete from Etudiant where id = ?";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
-            ps.setInt(1, e.getId_user());
+            ps.setInt(1, e.getId());
             ps.executeUpdate();
             System.out.println("Etudiant supprimer");
         } catch (SQLException ex) {
@@ -109,7 +109,7 @@ public class ServiceEtudiant implements IService {
     @Override
     public void add(Object u) {
         // TODO Auto-generated method stub
-        
+
     }
 
 }

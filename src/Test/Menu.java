@@ -18,12 +18,12 @@ public class Menu {
 
     public String start() {
         System.out.println(
-            // " ========================"
-            //     + "\n 1. list all users"
-            //     + "\n 2. create user"
-            //     + "\n 3. update user"
-            //     + "\n 4. delete user"
-                 "\n 1. Send Email");
+            " ========================"
+                + "\n 1. list all users"
+                + "\n 2. create user"
+                + "\n 3. update user"
+                + "\n 4. delete user"
+                + "\n 5. Send Email");
 
         String s = in.nextLine();
         return s;

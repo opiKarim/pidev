@@ -81,7 +81,7 @@ public class ServiceResp implements IService {
     @Override
     public boolean update(Object u) {
         try {
-            String req = "update `etudiant` set nom = ?, prenom = ?, phone = ?, email = ?, pwd = ?, carte_banq = ?, universite = ? where id_user = ?";
+            String req = "update `etudiant` set nom = ?, prenom = ?, phone = ?, email = ?, pwd = ?, carte_banq = ?, universite = ? where   id = ?";
             PreparedStatement ps = cnx.prepareStatement(req);
             Responsable e = (Responsable) u;
 
@@ -93,7 +93,7 @@ public class ServiceResp implements IService {
             ps.setString(6, e.getCarte_banq());
             ps.setString(7, e.getRole().toString());
             ps.setString(8, e.getUniversite());
-            ps.setInt(9, e.getId_user());
+            ps.setInt(9, e.getId());
 
             return true;
         } catch (Exception e) {
@@ -108,7 +108,7 @@ public class ServiceResp implements IService {
         String req = "delete from Responsable where id = ?";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
-            ps.setInt(1, e.getId_user());
+            ps.setInt(1, e.getId());
             ps.executeUpdate();
             System.out.println("Responsable supprimer");
         } catch (SQLException ex) {

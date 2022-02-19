@@ -10,7 +10,7 @@ import java.util.List;
 public interface IService<User> {
     public void add(User u);
 
-    public User getById(int id_user);
+    public User getById(int id);
 
     public List<User> getAll();
 

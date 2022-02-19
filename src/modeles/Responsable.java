@@ -7,9 +7,9 @@ public class Responsable extends User {
         super();
     }
 
-    public Responsable(int id_user, String nom, String prenom, int phone, String email, String pwd, String carte_banq,
+    public Responsable(int id, String nom, String prenom, int phone, String email, String pwd, String carte_banq,
             String universite) {
-        super(id_user, nom, prenom, phone, email, pwd, carte_banq);
+        super(id, nom, prenom, phone, email, pwd, carte_banq);
         this.universite = universite;
     }
 
