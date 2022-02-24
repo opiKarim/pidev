@@ -14,7 +14,7 @@ import java.net.ResponseCache;
 public enum Role {
     etudiant,
     enseignant,
-    responsable,
+    Recruteur,
     admin,
     empty
 }

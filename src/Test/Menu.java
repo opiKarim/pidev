@@ -23,7 +23,7 @@ public class Menu {
                         + "\n 4. delete user"
                         + "\n 5. Send Email"
                         + "\n 6. addCours"
-                        +"\n 7 . reset Password"
+                        + "\n 7 . reset Password"
                         + "\n 0. Quit");
 
         String s = in.nextLine();
@@ -34,7 +34,7 @@ public class Menu {
         System.out.println(" ========================"
                 + "\n 1. create simple user (test)"
                 + "\n 2. create Etudiant"
-                + "\n 3. create Responsable"
+                + "\n 3. create Recruteur"
                 + "\n 3. create Admin"
                 + "\n 4. create Enseignant");
 
