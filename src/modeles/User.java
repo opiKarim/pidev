@@ -5,6 +5,13 @@
  */
 package modeles;
 
+import java.security.SecureRandom;
+import java.util.Base64;
+import java.util.Scanner;
+
+import Test.SendEmail;
+import services.ServiceUser;
+
 /**
  *
  * @author Faty
@@ -19,11 +26,34 @@ public class User {
     protected String carte_banq;
     protected Role role;
 
+    ServiceUser sU = new ServiceUser();
+
     public User() {
     }
 
     public User(int id) {
         this.id = id;
+    }
+
+    public void resetPassword() {
+        SecureRandom random = new SecureRandom();
+        byte bytes[] = new byte[20];
+        random.nextBytes(bytes);
+        String token = bytes.toString();
+
+        SendEmail mail = new SendEmail(this, "Password reset", "this is your token \n" + token);
+        System.out.println("Donner le token");
+        Scanner in = new Scanner(System.in);
+        String sent = in.nextLine();
+        if (sent.equals(token)) {
+            System.out.println("Verifier");
+            System.out.println("Donner le nouveaux mot de pass");
+            String mdp = in.nextLine();
+            this.pwd = mdp;
+            sU.update(this);
+        } else {
+            System.out.println("Non Verifier");
+        }
     }
 
     public User(int id, String nom, String prenom, int phone, String email, String pwd, String carte_banq) {

@@ -7,6 +7,7 @@ package Test;
 
 import modeles.Enseignant;
 import modeles.Etudiant;
+import modeles.Role;
 import modeles.User;
 import services.ServiceEns;
 import services.ServiceEtudiant;
@@ -37,7 +38,7 @@ public class NewMain {
 
         switch (Integer.valueOf(menu.start())) {
             case 1:
-                System.out.println(sU.getAll());
+                System.out.println(sU.Search("tel","56"));
                 break;
             case 2:
                 switch (Integer.valueOf(menu.Add())) {
@@ -56,7 +57,7 @@ public class NewMain {
             case 4:
                 menu.deleteUser();
             case 5:
-                String subject = "This mail was sent from Ez-learning";
+                String subject = "This mail sent from Ez-learning";
                 String body = "Testing..";
                 SendEmail mail = new SendEmail(user, subject, body);
                 System.out.println("*************");
@@ -64,6 +65,10 @@ public class NewMain {
             case 6:
                 System.out.println(sEn.addCours(ens));
                 break;
+            case 7:
+                User hana = new User("hana","mensia",5555555,"hana.mensia@esprit.tn","hahahaha","fsdssvd");
+                sU.add(hana);
+                hana.resetPassword();
 
             default:
                 break;

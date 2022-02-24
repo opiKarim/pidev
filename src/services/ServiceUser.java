@@ -23,6 +23,41 @@ public class ServiceUser implements IService<User> {
 
     Connection cnx = DataSource.getInstance().getCnx();
 
+    public List<User> SortBy(String Column) {
+        List<User> list = new ArrayList<>();
+        try {
+            String req = "SELECT * FROM `user` order by "+Column;
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while (rs.next()) {
+                User u = new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5),
+                        rs.getString(6), rs.getString(7));
+                list.add(u);
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        return list;
+    }
+
+    public List<User> Search(String Column ,String value) {
+        List<User> list = new ArrayList<>();
+        try {
+            String req = "SELECT * FROM `user` WHERE "+Column+" = "+value;
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while (rs.next()) {
+                User u = new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5),
+                        rs.getString(6), rs.getString(7));
+                list.add(u);
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        return list;
+    }
+    
+
     @Override
     public void add(User u) {
         try {

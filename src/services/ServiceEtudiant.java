@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import modeles.Cour;
 import modeles.Etudiant;
 import modeles.User;
 import utils.DataSource;
@@ -15,6 +16,23 @@ import utils.DataSource;
 public class ServiceEtudiant implements IService {
 
     Connection cnx = DataSource.getInstance().getCnx();
+
+
+    public List<Cour> addCours(Etudiant e) {
+        List<Cour> cours = new ArrayList<>();
+        try {
+            String req = "SELECT * FROM `cour` where id = " + e.getId();
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while (rs.next()) {
+                Cour c = new Cour(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getInt(4));
+                cours.add(c);
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        return cours;
+    }
 
     public void add(User u) {
         Etudiant e = (Etudiant) u;
