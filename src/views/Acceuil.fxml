@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.net.URL?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16" fx:controller="views.AcceuilController">
+   <children>
+      <JFXButton fx:id="btnC" alignment="CENTER" buttonType="RAISED" layoutX="61.0" layoutY="128.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#GOCOURS" prefHeight="144.0" prefWidth="226.0" ripplerFill="#4059a9" styleClass="envoyer_btn" text="Gestion Cours/ Categorie" textFill="#4059a9">
+         <font>
+            <Font name="Impact" size="17.0" />
+         </font>
+         <effect>
+            <Glow />
+         </effect>
+         <stylesheets>
+            <URL value="@utils/css/stylehseet.css" />
+            <URL value="@../util/stylehseet.css" />
+         </stylesheets>
+      </JFXButton>
+      <JFXButton fx:id="btnE" alignment="CENTER" buttonType="RAISED" layoutX="326.0" layoutY="128.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#GOEVENT" prefHeight="144.0" prefWidth="238.0" ripplerFill="#4059a9" styleClass="envoyer_btn" text="Gestion Evenement" textFill="#4059a9">
+         <font>
+            <Font name="Impact" size="17.0" />
+         </font>
+         <effect>
+            <Glow />
+         </effect>
+         <stylesheets>
+            <URL value="@utils/css/stylehseet.css" />
+            <URL value="@../util/stylehseet.css" />
+         </stylesheets>
+      </JFXButton>
+   </children>
+</AnchorPane>
