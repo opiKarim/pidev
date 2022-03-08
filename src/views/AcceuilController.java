@@ -29,7 +29,7 @@ public class AcceuilController implements Initializable {
     private JFXButton btnC;
     @FXML
     private JFXButton btnE;
-
+    
     /**
      * Initializes the controller class.
      */
